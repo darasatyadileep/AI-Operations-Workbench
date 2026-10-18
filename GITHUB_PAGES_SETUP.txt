@@ -1,0 +1,11 @@
+# GitHub Pages patch
+
+Upload these files to the repository preserving paths.
+
+Then in GitHub:
+Settings -> Pages -> Build and deployment -> Source: GitHub Actions.
+
+The workflow will publish `professional_web` to:
+https://darasatyadileep.github.io/AI-Operations-Workbench/
+
+Important: GitHub Pages hosts only the React frontend. FastAPI/Python execution still requires a separately hosted backend.
