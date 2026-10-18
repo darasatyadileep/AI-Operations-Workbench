@@ -1,0 +1,19 @@
+company,title,url,themes,content_type,relevance_score
+PETRONAS,Read more Media Release 4 September 2026 PETRONAS Advances Malaysia's Upstream Data Platform with Agentic AI to Accelerate E&P Investment,https://www.petronas.com/media/media-releases/petronas-advances-malaysias-upstream-data-platform-agentic-ai-accelerate-ep,"AGENTIC_AI, DATA_CLOUD",NEWS,9
+Eni,Robotica,https://www.eni.com/it-IT/azioni/tecnologie-transizione-energetica/supercalcolo-intelligenza-artificiale/robotica.html,ROBOTICS,EVERGREEN,4
+SLB,Autonomous Robotic Operations,https://www.slb.com/products-and-services/innovating-in-oil-and-gas/well-production/midstream/autonomous-robotic-operations,ROBOTICS,EVERGREEN,4
+Baker Hughes,"Remote Operations Digital operations, monitoring and testing capabilities to serve critical industries",https://www.bakerhughes.com/remote-operations,AUTONOMOUS_OPERATIONS,EVERGREEN,4
+Baker Hughes,Remote Operations,https://www.bakerhughes.com/oilfield-services-and-equipment-digital/remote-operations,AUTONOMOUS_OPERATIONS,EVERGREEN,4
+Baker Hughes,Remote Operations Support,https://www.bakerhughes.com/remote-digital-solutions/remote-operations-support,AUTONOMOUS_OPERATIONS,EVERGREEN,4
+Halliburton,Automation and remote operations,https://www.halliburton.com/en/well-construction/automation-and-remote-operations.html,AUTONOMOUS_OPERATIONS,EVERGREEN,4
+Petrobras,Link de exemplo,https://forms.cloud.microsoft/r/i9V5Kvy4TN,DATA_CLOUD,EVERGREEN,2
+SLB,Data Solutions for the Cloud,https://www.slb.com/products-and-services/delivering-digital-at-scale/data-solutions/data-solutions-for-the-cloud,DATA_CLOUD,EVERGREEN,2
+SLB,Data Management,https://www.slb.com/products-and-services/delivering-digital-at-scale/data-solutions/data-solutions-for-the-cloud/data-management,DATA_CLOUD,EVERGREEN,2
+SLB,Data Solutions On-Premise,https://www.slb.com/products-and-services/delivering-digital-at-scale/data-solutions/data-solutions-on-premise,DATA_CLOUD,EVERGREEN,2
+SLB,Artificial Intelligence Solutions,https://www.slb.com/products-and-services/delivering-digital-at-scale/artificial-intelligence-solutions,AI_ML,EVERGREEN,2
+SLB,Cloud Services,https://www.slb.com/products-and-services/delivering-digital-at-scale/consulting-and-advisory-services/cloud-services,DATA_CLOUD,EVERGREEN,2
+SLB,Cloud Solution and Design,https://www.software.slb.com/services/digital-transformation-services/digital-transformation-consulting,DATA_CLOUD,EVERGREEN,2
+SLB,Cloud Operations,https://www.slb.com/products-and-services/delivering-digital-at-scale/consulting-and-advisory-services/cloud-services/cloud-operations,DATA_CLOUD,EVERGREEN,2
+SLB,Drone Survey,https://www.slb.com/products-and-services/decarbonizing-industry/methane-emissions-management/emissions-technologies-and-solutions/drone-surveys,DRONES,EVERGREEN,2
+Baker Hughes,Remote Visual Inspection (RVI),https://www.bakerhughes.com/waygate-technologies/remote-visual-inspection-rvi,COMPUTER_VISION,EVERGREEN,2
+Baker Hughes,Digital Transformation,https://www.bakerhughes.com/digital,TECHNOLOGY_STRATEGY,EVERGREEN,2

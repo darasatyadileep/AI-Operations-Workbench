@@ -1,0 +1,16 @@
+company,group,region,source_type,url,priority
+ADNOC,Operator,GCC,AI / Technology,https://www.adnoc.ae/en/artificial-intelligence,1
+Saudi Aramco,Operator,GCC,Corporate / Technology,https://www.aramco.com,1
+QatarEnergy,Operator,GCC,Corporate News,https://www.qatarenergy.qa,1
+Shell,Operator,Global,AI / Digital,https://www.shell.com/what-we-do/digitalisation.html,1
+BP,Operator,Global,Corporate News,https://www.bp.com,1
+ExxonMobil,Operator,Global,Corporate News,https://corporate.exxonmobil.com,1
+Chevron,Operator,Global,Newsroom,https://www.chevron.com/newsroom,1
+TotalEnergies,Operator,Global,Corporate News,https://totalenergies.com,1
+Equinor,Operator,Global,Newsroom,https://www.equinor.com/news-and-media,1
+Eni,Operator,Global,Technology / AI,https://www.eni.com,1
+PETRONAS,Operator,Asia,Corporate News,https://www.petronas.com,1
+Petrobras,Operator,Latin America,Corporate News,https://petrobras.com.br,1
+SLB,Technology Provider,Global,Newsroom,https://www.slb.com/newsroom,1
+Baker Hughes,Technology Provider,Global,Corporate News,https://www.bakerhughes.com,1
+Halliburton,Technology Provider,Global,Press Releases,https://www.halliburton.com,1
