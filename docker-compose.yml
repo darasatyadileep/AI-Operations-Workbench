@@ -1,0 +1,48 @@
+services:
+  compressor-api:
+    build: "./Compressor Health Module"
+    ports:
+      - "8001:8001"
+
+  optimizer-api:
+    build: "./Feed Allocation Optimizer"
+    ports:
+      - "8002:8002"
+
+  vision-api:
+    build: "./Computer Vision"
+    ports:
+      - "8003:8003"
+
+  intelligence-api:
+    build: "./Market Intelligence"
+    ports:
+      - "8004:8004"
+    volumes:
+      - intelligence_data:/app/data
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - OPENAI_MODEL=${OPENAI_MODEL:-}
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - COMPRESSOR_API_URL=http://compressor-api:8001/compressor/analyze
+      - OPTIMIZER_API_URL=http://optimizer-api:8002/optimizer/run
+      - VISION_API_URL=http://vision-api:8003/vision/nameplate
+      - INTELLIGENCE_API_BASE=http://intelligence-api:8004
+      - COMPRESSOR_API_BASE=http://compressor-api:8001/
+      - OPTIMIZER_API_BASE=http://optimizer-api:8002/
+      - VISION_API_BASE=http://vision-api:8003/
+    depends_on:
+      - compressor-api
+      - optimizer-api
+      - vision-api
+      - intelligence-api
+
+volumes:
+  intelligence_data:
