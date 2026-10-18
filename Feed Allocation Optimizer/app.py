@@ -1,3 +1,5 @@
+import os
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from pydantic import BaseModel
 from typing import Any, Dict, Optional
@@ -11,7 +13,16 @@ from optimizer import run_optimizer
 BASE_DIR = Path(__file__).resolve().parent
 INPUT_FILE = BASE_DIR / "module2_feed_allocation_inputs_v1.xlsx"
 
-app = FastAPI(title="Feed Allocation Optimizer API")
+app = FastAPI(title="Feed Allocation Optimi
+allowed_origins = [x.strip() for x in os.getenv("ALLOWED_ORIGINS","*").split(",") if x.strip()]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+zer API")
 
 class ScenarioPayload(BaseModel):
     feeds: list[dict]

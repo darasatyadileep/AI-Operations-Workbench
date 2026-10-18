@@ -7,11 +7,12 @@ from dotenv import load_dotenv
 
 load_dotenv(Path(__file__).with_name('.env'))
 router = APIRouter()
-DB = Path(__file__).with_name('research_history.db')
+DB = Path(os.getenv('RESEARCH_DB_PATH', str(Path(__file__).with_name('research_history.db'))))
 class ResearchRequest(BaseModel):
     query: str = Field(min_length=12, max_length=2500)
 
 def init_db():
+    DB.parent.mkdir(parents=True, exist_ok=True)
     with sqlite3.connect(DB) as con:
         con.execute('CREATE TABLE IF NOT EXISTS research_runs (id INTEGER PRIMARY KEY, query TEXT, report TEXT, sources TEXT, created_at TEXT)')
 

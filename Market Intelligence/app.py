@@ -1,10 +1,21 @@
+import os
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 import sqlite3
 import pandas as pd
 
 DATABASE_FILE = "intelligence.db"
 
-app = FastAPI(
+app =
+allowed_origins = [x.strip() for x in os.getenv("ALLOWED_ORIGINS","*").split(",") if x.strip()]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+ FastAPI(
     title="Oil & Gas Technology Intelligence API"
 )
 

@@ -1,3 +1,5 @@
+import os
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, UploadFile, File, HTTPException
 import pandas as pd
 import numpy as np
@@ -5,7 +7,16 @@ import joblib
 import json
 import io
 
-app = FastAPI(title="Compressor Health API")
+app = FastAPI(title="Compressor Hea
+allowed_origins = [x.strip() for x in os.getenv("ALLOWED_ORIGINS","*").split(",") if x.strip()]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+lth API")
 
 # -----------------------------
 # Load trained model artifacts
