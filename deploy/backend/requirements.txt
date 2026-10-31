@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pandas
+numpy
+scikit-learn
+joblib
+scipy
+openpyxl
+pillow
+opencv-python-headless
+easyocr
+requests
+beautifulsoup4
+python-dotenv
+openai
