@@ -57,3 +57,11 @@
 .resultWorkspace{margin-top:20px}.deviationList{display:grid;gap:8px;margin-top:16px}.deviationList>div{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #23364a;padding:10px 0}.deviationList span{display:flex;align-items:center;gap:9px;text-transform:capitalize;color:#b7c7d6;font-size:12px}.deviationList span b{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#17333b;color:var(--teal);font-size:10px}.deviationList strong{color:#e6f2ef;font-size:12px}
 @media(max-width:1100px){.sliderGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.cloudFacts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.sliderGrid,.cloudFacts{grid-template-columns:1fr}}
+
+.allocationSection{margin-top:22px;border-top:1px solid #263b50;padding-top:10px}
+.matrixGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.matrixCard{border:1px solid #293e53;background:#091625;border-radius:12px;padding:17px}
+.matrixCard h3{color:var(--teal);margin:0 0 5px}.matrixCard p{font-size:11px;color:#879bb0;margin:0 0 12px}
+.matrixTable td,.matrixTable th{text-align:right}.matrixTable td:first-child,.matrixTable th:first-child{text-align:left}
+.matrixTable .flowCell{background:#102d31;color:#77e5d0;font-weight:700}
+@media(max-width:900px){.matrixGrid{grid-template-columns:1fr}}
