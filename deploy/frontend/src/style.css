@@ -36,3 +36,24 @@
   line-height:1.6;
   text-align:center;
 }
+
+/* --- 2026 Azure portfolio redesign --- */
+.actualArch{margin-top:28px}
+.actualArch .sectionHead h2,.schemeCard h2,.panel h2,.decisionCard h2,.sectionHead h2{color:var(--teal)}
+.cloudFacts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:20px}
+.cloudFacts span{border:1px solid #2a4057;background:#0a1625;border-radius:10px;padding:13px;color:#92a8bd;font-size:11px}
+.cloudFacts b{display:block;color:#e6f2ef;font-size:11px;margin-bottom:4px}
+.inputExperience{margin-top:20px}
+.modeTabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}
+.modeTabs button,.modeUpload{border:1px solid #2d4155;background:#0f1c2c;color:#93a9bd;padding:11px 15px;border-radius:9px;display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;cursor:pointer}
+.modeTabs button.on,.modeUpload.on{border-color:#4fcfba;background:#17333b;color:#e7fffa}
+.modeUpload input{display:none}
+.scenarioCallout{display:flex;flex-direction:column;gap:5px;border:1px solid #2a4651;background:#0d252c;border-radius:11px;padding:16px;margin-bottom:18px}
+.scenarioCallout b{color:#dff7f2;font-size:13px}.scenarioCallout span{color:#91aaa5;font-size:11px;line-height:1.6}
+.scenarioEditor{border:1px solid #2a4057;background:#0a1625;border-radius:12px;padding:18px;margin-bottom:18px}.scenarioEditor>p{margin-top:0}
+.sliderGrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:16px 0}
+.sliderCard{border:1px solid #293e53;background:#101d2e;border-radius:10px;padding:13px}.sliderCard>div{display:flex;justify-content:space-between;gap:8px;margin-bottom:9px}.sliderCard span{color:#8fa6bc;font-size:10px}.sliderCard b{color:var(--teal);font-size:11px}.sliderCard input{width:100%}
+.dataPreview{margin-top:18px;border-top:1px solid #263b50;padding-top:18px}.rowsBadge{font-size:10px;color:#6fe0cb;border:1px solid #31655d;border-radius:20px;padding:6px 9px}
+.resultWorkspace{margin-top:20px}.deviationList{display:grid;gap:8px;margin-top:16px}.deviationList>div{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #23364a;padding:10px 0}.deviationList span{display:flex;align-items:center;gap:9px;text-transform:capitalize;color:#b7c7d6;font-size:12px}.deviationList span b{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#17333b;color:var(--teal);font-size:10px}.deviationList strong{color:#e6f2ef;font-size:12px}
+@media(max-width:1100px){.sliderGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.cloudFacts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.sliderGrid,.cloudFacts{grid-template-columns:1fr}}
