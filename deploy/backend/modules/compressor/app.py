@@ -226,6 +226,26 @@ async def analyze_compressor(file: UploadFile = File(...)):
         status = "Normal"
 
     # -----------------------------
+    # Explainability support
+    # -----------------------------
+    # This is not causal feature importance. It shows which variables in the
+    # latest 24-hour window are furthest from the normal training baseline
+    # after applying the saved StandardScaler.
+    recent_scaled = X_scaled[-min(24, len(X_scaled)):]
+    recent_deviation = np.mean(np.abs(recent_scaled), axis=0)
+    variable_deviations = sorted(
+        [
+            {
+                "variable": feature,
+                "deviation_from_normal": round(float(deviation), 2)
+            }
+            for feature, deviation in zip(features, recent_deviation)
+        ],
+        key=lambda item: item["deviation_from_normal"],
+        reverse=True
+    )[:5]
+
+    # -----------------------------
     # Trend data for frontend chart
     # -----------------------------
 
@@ -259,5 +279,6 @@ async def analyze_compressor(file: UploadFile = File(...)):
             thresholds["high_threshold"],
             4
         ),
-        "trend": trend
+        "trend": trend,
+        "variable_deviations": variable_deviations
     }
