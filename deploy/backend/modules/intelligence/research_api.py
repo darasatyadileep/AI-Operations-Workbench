@@ -11,6 +11,14 @@ DB = Path(os.getenv('RESEARCH_DB_PATH', '/tmp/research_history.db'))
 class ResearchRequest(BaseModel):
     query: str = Field(min_length=12, max_length=2500)
 
+@router.get('/research/status')
+def research_status():
+    return {
+        'live_research_configured': bool(os.getenv('OPENAI_API_KEY')),
+        'provider': 'OpenAI Responses API + web search',
+        'history_storage': 'ephemeral container storage'
+    }
+
 def init_db():
     with sqlite3.connect(DB) as con:
         con.execute('CREATE TABLE IF NOT EXISTS research_runs (id INTEGER PRIMARY KEY, query TEXT, report TEXT, sources TEXT, created_at TEXT)')
