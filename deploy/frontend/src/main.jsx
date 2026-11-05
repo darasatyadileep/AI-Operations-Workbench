@@ -84,7 +84,7 @@ function Overview({setPage}){const cards=[['Compressor Health','Multivariable an
  </>}
 
 function parseCompressorCsv(text){const lines=text.trim().split(/\r?\n/);const headers=lines[0].split(',');return {headers,rows:lines.slice(1).map(line=>{const vals=line.split(',');return Object.fromEntries(headers.map((h,i)=>[h,vals[i]]))})}}
-function compressorCsv({headers,rows}){return [headers.join(','),...rows.map(r=>headers.map(h=>r[h]).join(',')].join('\n'))}
+function compressorCsv({headers,rows}){return [headers.join(','),...rows.map(r=>headers.map(h=>r[h]).join(','))].join('\n')}
 function CompressorPage(){
  const[file,setFile]=useState(null),[loading,setLoading]=useState(false),[error,setError]=useState(''),[result,setResult]=useState(null),[dataset,setDataset]=useState(null),[mode,setMode]=useState('sample'),[mods,setMods]=useState({vibration:0,bearing:0,discharge:0,flow:0,power:0});
  const loadSample=async()=>{setError('');try{let r=await fetch('/samples/compressor_C101_synthetic_6months.csv');if(!r.ok)throw Error('Sample file unavailable');let text=await r.text();let parsed=parseCompressorCsv(text);setDataset(parsed);let f=new File([text],'compressor_C101_synthetic_6months.csv',{type:'text/csv'});setFile(f);setMode('sample');setResult(null);setMods({vibration:0,bearing:0,discharge:0,flow:0,power:0})}catch(e){setError('Could not load the sample dataset: '+e.message)}};
