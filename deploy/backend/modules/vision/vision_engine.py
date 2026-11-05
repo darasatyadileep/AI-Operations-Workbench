@@ -7,7 +7,14 @@ import numpy as np
 import re
 
 
-reader = easyocr.Reader(["en"], gpu=False)
+reader = None
+
+
+def get_reader():
+    global reader
+    if reader is None:
+        reader = easyocr.Reader(["en"], gpu=False)
+    return reader
 
 
 def analyze_nameplate(image_bytes):
@@ -44,7 +51,7 @@ def analyze_nameplate(image_bytes):
     enhanced = clahe.apply(gray)
 
     # OCR
-    results = reader.readtext(enhanced)
+    results = get_reader().readtext(enhanced)
 
     detected_regions = []
 
