@@ -1,0 +1,42 @@
+name: Validate Workbench Redesign
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "deploy/**"
+      - ".github/workflows/validate-redesign.yml"
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: deploy/frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        working-directory: deploy/frontend
+        run: npm ci
+
+      - name: Build React frontend
+        working-directory: deploy/frontend
+        run: npm run build
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Python syntax check
+        run: |
+          python -m py_compile deploy/backend/modules/compressor/app.py
+          python -m py_compile deploy/backend/modules/vision/vision_engine.py
+          python -m py_compile deploy/backend/modules/intelligence/research_api.py

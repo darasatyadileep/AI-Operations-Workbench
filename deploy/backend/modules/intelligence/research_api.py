@@ -11,6 +11,14 @@ DB = Path(os.getenv('RESEARCH_DB_PATH', '/tmp/research_history.db'))
 class ResearchRequest(BaseModel):
     query: str = Field(min_length=12, max_length=2500)
 
+@router.get('/research/status')
+def research_status():
+    return {
+        'live_research_configured': bool(os.getenv('OPENAI_API_KEY')),
+        'provider': 'OpenAI Responses API + web search',
+        'history_storage': 'ephemeral container storage'
+    }
+
 def init_db():
     with sqlite3.connect(DB) as con:
         con.execute('CREATE TABLE IF NOT EXISTS research_runs (id INTEGER PRIMARY KEY, query TEXT, report TEXT, sources TEXT, created_at TEXT)')
@@ -18,7 +26,7 @@ def init_db():
 @router.post('/research')
 def research(payload: ResearchRequest):
     if not os.getenv('OPENAI_API_KEY'):
-        raise HTTPException(503, 'Add OPENAI_API_KEY to Market Intelligence/.env. API billing/credits are required for live research.')
+        raise HTTPException(503, 'OPENAI_API_KEY is not configured in the application environment. API billing/credits are required for live research.')
     try:
         from openai import OpenAI
         client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))

@@ -4,9 +4,17 @@ from io import BytesIO
 import cv2
 import easyocr
 import numpy as np
+import re
 
 
-reader = easyocr.Reader(["en"], gpu=False)
+reader = None
+
+
+def get_reader():
+    global reader
+    if reader is None:
+        reader = easyocr.Reader(["en"], gpu=False)
+    return reader
 
 
 def analyze_nameplate(image_bytes):
@@ -43,7 +51,7 @@ def analyze_nameplate(image_bytes):
     enhanced = clahe.apply(gray)
 
     # OCR
-    results = reader.readtext(enhanced)
+    results = get_reader().readtext(enhanced)
 
     detected_regions = []
 
@@ -102,9 +110,49 @@ def analyze_nameplate(image_bytes):
     elif "SIEMENS" in text_upper:
         manufacturer = "Siemens"
 
+    # -------------------------
+    # Lightweight structured extraction
+    # -------------------------
+    def match_value(patterns):
+        for pattern in patterns:
+            match = re.search(pattern, text_upper, re.IGNORECASE)
+            if match:
+                return match.group(1).strip(" :-")
+        return None
+
+    structured_fields = {
+        "model": match_value([
+            r"(?:MODEL|TYPE)\s*(?:NO\.?|NUMBER|#)?\s*[:\-]?\s*([A-Z0-9][A-Z0-9\-\./]{2,24})"
+        ]),
+        "serial_number": match_value([
+            r"(?:SERIAL|S\s*/?\s*N|SER\.?\s*NO\.?)\s*[:\-#]?\s*([A-Z0-9][A-Z0-9\-\./]{2,28})"
+        ]),
+        "rated_power": match_value([
+            r"([0-9]+(?:\.[0-9]+)?\s*(?:KW|MW|HP))"
+        ]),
+        "voltage": match_value([
+            r"([0-9]+(?:\.[0-9]+)?\s*(?:KV|V))\b"
+        ]),
+        "frequency": match_value([
+            r"([0-9]+(?:\.[0-9]+)?\s*HZ)\b"
+        ]),
+        "pressure_rating": match_value([
+            r"([0-9]+(?:\.[0-9]+)?\s*(?:BAR|BARG|PSI|KPA|MPA))\b"
+        ])
+    }
+
+    confidences = [item["confidence"] for item in detected_regions]
+    average_confidence = (
+        round(float(np.mean(confidences)), 3)
+        if confidences
+        else 0.0
+    )
+
     return {
         "equipment_type": equipment_type,
         "manufacturer": manufacturer,
+        "average_ocr_confidence": average_confidence,
+        "structured_fields": structured_fields,
         "raw_text": raw_text,
         "detected_regions": detected_regions
     }
