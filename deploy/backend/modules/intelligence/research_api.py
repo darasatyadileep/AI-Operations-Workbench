@@ -26,7 +26,7 @@ def init_db():
 @router.post('/research')
 def research(payload: ResearchRequest):
     if not os.getenv('OPENAI_API_KEY'):
-        raise HTTPException(503, 'Add OPENAI_API_KEY to Market Intelligence/.env. API billing/credits are required for live research.')
+        raise HTTPException(503, 'OPENAI_API_KEY is not configured in the application environment. API billing/credits are required for live research.')
     try:
         from openai import OpenAI
         client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
